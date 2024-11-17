@@ -1,0 +1,130 @@
+<template>
+  <div class="viewflame" style={viewflameStyle} onscroll={handleScroll}>
+    <table>
+      <!-- header -->
+      <thead class="sticky">
+        <tr>
+          <template iterator:col={columns}>
+            <td title={col.value.label} key={col.value.fieldName}>{col.value.label}</td>
+          </template>
+        </tr>
+        <tr>
+          <template iterator:col={columns}>
+            <td title={col.value.label} key={col.value.fieldName}>{col.value.label}</td>
+          </template>
+        </tr>
+      </thead>
+      <!-- body -->
+      <tbody>
+        <tr style={transformTopStyle}>
+          <td colspan="100" style="height: 0px; border: 0px;"></td>
+        </tr>
+        <tr iterator:row={visibledata} key={row.value.index} style={rowStyle}>
+            <td>{row.value.col0}</td>
+            <td>{row.value.col1}</td>
+            <td>{row.value.col2}</td>
+            <td>{row.value.col3}</td>
+            <td>{row.value.col4}</td>
+            <td>{row.value.col5}</td>
+            <td>{row.value.col6}</td>
+            <td>{row.value.col7}</td>
+            <td>{row.value.col8}</td>
+            <td>{row.value.col9}</td>
+            <td>{row.value.col10}</td>
+            <td>{row.value.col11}</td>
+            <td>{row.value.col12}</td>
+            <td>{row.value.col13}</td>
+            <td>{row.value.col14}</td>
+            <td>{row.value.col15}</td>
+            <td>{row.value.col16}</td>
+            <td>{row.value.col17}</td>
+            <td>{row.value.col18}</td>
+            <td>{row.value.col19}</td>
+            <td>{row.value.col20}</td>
+            <td>{row.value.col21}</td>
+            <td>{row.value.col22}</td>
+            <td>{row.value.col23}</td>
+            <td>{row.value.col24}</td>
+            <td>{row.value.col25}</td>
+            <td>{row.value.col26}</td>
+            <td>{row.value.col27}</td>
+            <td>{row.value.col28}</td>
+            <td>{row.value.col29}</td>
+            <td>{row.value.col30}</td>
+            <td>{row.value.col31}</td>
+            <td>{row.value.col32}</td>
+            <td>{row.value.col33}</td>
+            <td>{row.value.col34}</td>
+            <td>{row.value.col35}</td>
+            <td>{row.value.col36}</td>
+            <td>{row.value.col37}</td>
+            <td>{row.value.col38}</td>
+            <td>{row.value.col39}</td>
+            <td>{row.value.col40}</td>
+            <td>{row.value.col41}</td>
+            <td>{row.value.col42}</td>
+            <td>{row.value.col43}</td>
+            <td>{row.value.col44}</td>
+            <td>{row.value.col45}</td>
+            <td>{row.value.col46}</td>
+            <td>{row.value.col47}</td>
+            <td>{row.value.col48}</td>
+            <td>{row.value.col49}</td>
+            <td>{row.value.col50}</td>
+            <td>{row.value.col51}</td>
+            <td>{row.value.col52}</td>
+            <td>{row.value.col53}</td>
+            <td>{row.value.col54}</td>
+            <td>{row.value.col55}</td>
+            <td>{row.value.col56}</td>
+            <td>{row.value.col57}</td>
+            <td>{row.value.col58}</td>
+            <td>{row.value.col59}</td>
+            <td>{row.value.col60}</td>
+            <td>{row.value.col61}</td>
+            <td>{row.value.col62}</td>
+            <td>{row.value.col63}</td>
+            <td>{row.value.col64}</td>
+            <td>{row.value.col65}</td>
+            <td>{row.value.col66}</td>
+            <td>{row.value.col67}</td>
+            <td>{row.value.col68}</td>
+            <td>{row.value.col69}</td>
+            <td>{row.value.col70}</td>
+            <td>{row.value.col71}</td>
+            <td>{row.value.col72}</td>
+            <td>{row.value.col73}</td>
+            <td>{row.value.col74}</td>
+            <td>{row.value.col75}</td>
+            <td>{row.value.col76}</td>
+            <td>{row.value.col77}</td>
+            <td>{row.value.col78}</td>
+            <td>{row.value.col79}</td>
+            <td>{row.value.col80}</td>
+            <td>{row.value.col81}</td>
+            <td>{row.value.col82}</td>
+            <td>{row.value.col83}</td>
+            <td>{row.value.col84}</td>
+            <td>{row.value.col85}</td>
+            <td>{row.value.col86}</td>
+            <td>{row.value.col87}</td>
+            <td>{row.value.col88}</td>
+            <td>{row.value.col89}</td>
+            <td>{row.value.col90}</td>
+            <td>{row.value.col91}</td>
+            <td>{row.value.col92}</td>
+            <td>{row.value.col93}</td>
+            <td>{row.value.col94}</td>
+            <td>{row.value.col95}</td>
+            <td>{row.value.col96}</td>
+            <td>{row.value.col97}</td>
+            <td>{row.value.col98}</td>
+            <td>{row.value.col99}</td>
+        </tr>
+        <tr style={transformBottomStyle}>
+          <td colspan="100" style="height: 0px; border: 0px;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
