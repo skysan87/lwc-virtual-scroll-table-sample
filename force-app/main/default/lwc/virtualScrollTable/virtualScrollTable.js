@@ -29,31 +29,31 @@ export default class VirtualScrollTable extends LightningElement {
 
   ticking = false
 
+  connectedCallback () {
+    window.addEventListener('resize', () => this.calcVisibleData())
+  }
+
   handleScroll () {
     if (!this.ticking) {
       requestAnimationFrame(() => {
         this.ticking = false
-        this.calcVisibleData(false)
+        this.calcVisibleData()
       })
       this.ticking = true
     }
   }
 
-  calcVisibleData (isFirstTime) {
-    if (isFirstTime === false) {
-      const scrollTop = this.getScrollTop()
-      const lastIndex = this.startRowIndex
-      this.startRowIndex = Math.floor(scrollTop / this.rowheight) - BUFFER_ROW_COUNT
-      this.startRowIndex = Math.max(0, this.startRowIndex)
-
-      if (lastIndex === this.startRowIndex) {
-        return
-      }
-    }
-
+  calcVisibleData () {
+    const scrollTop = this.getScrollTop()
     const viewHeight = this.getViewHeight()
-    this.visibleRowCount = Math.ceil(viewHeight / this.rowheight) + 2 * BUFFER_ROW_COUNT
-    this.visibleRowCount = Math.min(this.totalDataLength - this.startRowIndex, this.visibleRowCount)
+
+    if (viewHeight === 0) return
+
+    const rowIndex = Math.floor(scrollTop / this.rowheight) - BUFFER_ROW_COUNT
+    this.startRowIndex = Math.max(0, rowIndex)
+
+    const rowCount = Math.ceil(viewHeight / this.rowheight) + 2 * BUFFER_ROW_COUNT
+    this.visibleRowCount = Math.min(this.totalDataLength - this.startRowIndex, rowCount)
 
     this.offsetY_Top = this.startRowIndex * this.rowheight
     this.offsetY_Bottom = this.totalHeight - this.offsetY_Top - (this.visibleRowCount * this.rowheight)
@@ -68,7 +68,7 @@ export default class VirtualScrollTable extends LightningElement {
     this.totalDataLength = value.length
     this._alldata = value
     this.totalHeight = this.totalDataLength * this.rowheight
-    this.calcVisibleData(true)
+    this.calcVisibleData()
   }
 
   get visibledata () {
@@ -79,7 +79,7 @@ export default class VirtualScrollTable extends LightningElement {
 
   getScrollTop () {
     const element = this.template.querySelector('.viewflame')
-    return element.scrollTop
+    return element?.scrollTop ?? 0
   }
 
   getViewHeight () {
