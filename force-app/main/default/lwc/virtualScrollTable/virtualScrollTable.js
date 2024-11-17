@@ -3,7 +3,7 @@ import { api, LightningElement } from 'lwc'
 const BUFFER_ROW_COUNT = 1
 
 export default class VirtualScrollTable extends LightningElement {
-  @api viewheight = 100
+  @api viewheight = '100px' // The percentage symbol(%) does not work correctly.
   @api rowheight = 28.5 // basic slds-table-cell height(if using 'slds-table_cell-buffer' selector)
   @api columns = []
 
@@ -38,7 +38,8 @@ export default class VirtualScrollTable extends LightningElement {
       }
     }
 
-    this.visibleRowCount = Math.ceil(this.viewheight / this.rowheight) + 2 * BUFFER_ROW_COUNT
+    const viewHeight = this.getViewHeight()
+    this.visibleRowCount = Math.ceil(viewHeight / this.rowheight) + 2 * BUFFER_ROW_COUNT
     this.visibleRowCount = Math.min(this.alldatalength - this.startRowIndex, this.visibleRowCount)
 
     this.offsetY_Top = this.startRowIndex * this.rowheight
@@ -70,6 +71,11 @@ export default class VirtualScrollTable extends LightningElement {
     return element.scrollTop
   }
 
+  getViewHeight() {
+    const element = this.template.querySelector('.viewflame')
+    return element?.clientHeight ?? 0
+  }
+
   get transformTopStyle() {
     return `height: ${this.offsetY_Top}px; padding: 0; border: 0px;`
   }
@@ -80,8 +86,8 @@ export default class VirtualScrollTable extends LightningElement {
 
   get viewflameStyle() {
     return `
-      height: ${this.viewheight}px;
-      max-height: ${this.viewheight}px;
+      height: ${this.viewheight};
+      max-height: ${this.viewheight};
       overflow: auto;
     `
   }
