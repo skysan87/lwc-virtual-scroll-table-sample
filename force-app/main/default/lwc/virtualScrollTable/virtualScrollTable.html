@@ -5,21 +5,19 @@
       <thead class="sticky">
         <tr>
           <template iterator:col={columns}>
-            <td title={col.value.label} key={col.value.fieldName}>1:{col.value.label}</td>
-          </template>
-        </tr>
-        <tr>
-          <template iterator:col={columns}>
-            <td title={col.value.label} key={col.value.fieldName}>2:{col.value.label}</td>
+            <td title={col.value.label} key={col.value.fieldName}>{col.value.label}</td>
           </template>
         </tr>
       </thead>
       <!-- body -->
       <tbody>
         <tr style={transformTopStyle}>
-          <td colspan="100" style="height: 0px; border: 0px; padding: 0px;"></td>
+          <td colspan={colspan} style="height: 0px; border: 0px; padding: 0px;"></td>
         </tr>
         <tr iterator:row={visibledata} key={row.value.index} style={rowStyle} class="slds-hint-parent">
+          <!--
+            TODO: Due to limitations in slot element behavior within table elements, please adjust your table layout accordingly.
+          -->
           <td>
             <div class="slds-truncate">{row.value.col0}</div>
           </td>
@@ -322,7 +320,7 @@
           </td>
         </tr>
         <tr style={transformBottomStyle}>
-          <td colspan="100" style="height: 0px; border: 0px;"></td>
+          <td colspan={colspan} style="height: 0px; border: 0px;"></td>
         </tr>
       </tbody>
     </table>

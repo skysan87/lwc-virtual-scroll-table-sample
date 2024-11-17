@@ -1,14 +1,26 @@
 import { api, LightningElement } from 'lwc'
 
-const BUFFER_ROW_COUNT = 1
+const BUFFER_ROW_COUNT = 5
 
 export default class VirtualScrollTable extends LightningElement {
-  @api viewheight = '100px' // The percentage symbol(%) does not work correctly.
+  /**
+   * @type {string} component visible height
+   * @description The percentage symbol(%) does not work correctly.
+   * @example '100vh', '200px'
+   */
+  @api viewheight = ''
+
+  /**
+   * @type {number} table-row height
+   */
   @api rowheight = 28.5 // basic slds-table-cell height(if using 'slds-table_cell-buffer' selector)
+  /**
+   * @type {{ label: string, fieldName: string }[]} columns config
+   */
   @api columns = []
 
   _alldata = []
-  alldatalength = 0
+  totalDataLength = 0
 
   visibleRowCount = 0
   startRowIndex = 0
@@ -40,7 +52,7 @@ export default class VirtualScrollTable extends LightningElement {
 
     const viewHeight = this.getViewHeight()
     this.visibleRowCount = Math.ceil(viewHeight / this.rowheight) + 2 * BUFFER_ROW_COUNT
-    this.visibleRowCount = Math.min(this.alldatalength - this.startRowIndex, this.visibleRowCount)
+    this.visibleRowCount = Math.min(this.totalDataLength - this.startRowIndex, this.visibleRowCount)
 
     this.offsetY_Top = this.startRowIndex * this.rowheight
     this.offsetY_Bottom = this.totalHeight - this.offsetY_Top - (this.visibleRowCount * this.rowheight)
@@ -52,12 +64,10 @@ export default class VirtualScrollTable extends LightningElement {
   }
 
   set records (value) {
-    console.time('record')
-    this.alldatalength = value.length
+    this.totalDataLength = value.length
     this._alldata = value
-    this.totalHeight = this.alldatalength * this.rowheight
+    this.totalHeight = this.totalDataLength * this.rowheight
     this.calcVisibleData(true)
-    console.timeEnd('record')
   }
 
   get visibledata () {
@@ -94,5 +104,9 @@ export default class VirtualScrollTable extends LightningElement {
 
   get rowStyle () {
     return `height: ${this.rowheight}px;`
+  }
+
+  get colspan () {
+    return this.columns.length
   }
 }
