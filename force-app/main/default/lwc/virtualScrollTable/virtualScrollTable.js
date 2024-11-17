@@ -27,15 +27,16 @@ export default class VirtualScrollTable extends LightningElement {
   offsetY_Top = 0
   offsetY_Bottom = 0
 
-  // TODO: debounce
-  animationFrame = {}
+  ticking = false
+
   handleScroll () {
-    if (this.animationFrame.current) {
-      cancelAnimationFrame(this.animationFrame.current)
+    if (!this.ticking) {
+      requestAnimationFrame(() => {
+        this.ticking = false
+        this.calcVisibleData(false)
+      })
+      this.ticking = true
     }
-    this.animationFrame.current = requestAnimationFrame(() => {
-      this.calcVisibleData(false)
-    })
   }
 
   calcVisibleData (isFirstTime) {
