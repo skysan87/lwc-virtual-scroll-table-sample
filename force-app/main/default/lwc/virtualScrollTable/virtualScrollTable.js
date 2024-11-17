@@ -4,7 +4,7 @@ const BUFFER_ROW_COUNT = 1
 
 export default class VirtualScrollTable extends LightningElement {
   @api viewheight = 100
-  @api rowheight = 22
+  @api rowheight = 28.5 // basic slds-table-cell height(if using 'slds-table_cell-buffer' selector)
   @api columns = []
 
   _alldata = []
