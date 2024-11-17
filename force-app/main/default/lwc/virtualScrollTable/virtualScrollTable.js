@@ -17,7 +17,7 @@ export default class VirtualScrollTable extends LightningElement {
 
   // TODO: debounce
   animationFrame = {}
-  handleScroll() {
+  handleScroll () {
     if (this.animationFrame.current) {
       cancelAnimationFrame(this.animationFrame.current)
     }
@@ -26,7 +26,7 @@ export default class VirtualScrollTable extends LightningElement {
     })
   }
 
-  calcVisibleData(isFirstTime) {
+  calcVisibleData (isFirstTime) {
     if (isFirstTime === false) {
       const scrollTop = this.getScrollTop()
       const lastIndex = this.startRowIndex
@@ -47,11 +47,11 @@ export default class VirtualScrollTable extends LightningElement {
   }
 
   @api
-  get records() {
+  get records () {
     return this._alldata
   }
 
-  set records(value) {
+  set records (value) {
     console.time('record')
     this.alldatalength = value.length
     this._alldata = value
@@ -60,31 +60,31 @@ export default class VirtualScrollTable extends LightningElement {
     console.timeEnd('record')
   }
 
-  get visibledata() {
+  get visibledata () {
     const start = this.startRowIndex
     const end = start + this.visibleRowCount
     return this._alldata.slice(start, end)
   }
 
-  getScrollTop() {
+  getScrollTop () {
     const element = this.template.querySelector('.viewflame')
     return element.scrollTop
   }
 
-  getViewHeight() {
+  getViewHeight () {
     const element = this.template.querySelector('.viewflame')
     return element?.clientHeight ?? 0
   }
 
-  get transformTopStyle() {
+  get transformTopStyle () {
     return `height: ${this.offsetY_Top}px; padding: 0; border: 0px;`
   }
 
-  get transformBottomStyle() {
+  get transformBottomStyle () {
     return `height: ${this.offsetY_Bottom}px; padding: 0; border: 0px;`
   }
 
-  get viewflameStyle() {
+  get viewflameStyle () {
     return `
       height: ${this.viewheight};
       max-height: ${this.viewheight};
@@ -92,7 +92,7 @@ export default class VirtualScrollTable extends LightningElement {
     `
   }
 
-  get rowStyle() {
+  get rowStyle () {
     return `height: ${this.rowheight}px;`
   }
 }
