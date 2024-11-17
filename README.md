@@ -1,28 +1,12 @@
-# SFDX Project Boilerplate for Remote Development(VSCode Extension)
+# (Sample) Virtual Scroll Table for Lightning Web Component
 
-This is created by blow commads.
+## Image
+![Virtual Scroll in Lightning Web Component](doc/lwc-virtual-scroll-table.gif)
 
-```bash
-sfdx force:project:create -n <project_name> --manifest
-```
+## Source Code
 
-## Requirements
+- force-app/main/default/lwc/virtualScrollTable
 
-* Docker
-* VSCode
-* VSCode Extensions
-  * Remote Development
+> [!NOTE]
+> Note that the tbody rendering for virtual scrolling requires customization in virtualScrollTable.html. Source code is located in force-app/main/default/lwc/virtualScrollTable.
 
-## Install
-
-```bash
-git clone https://github.com/skysan87/sfdx-docker-template.git <project_name>
-```
-
-## Starting Development
-
-Start SFDX project in Dev Conteiner(VSCode):
-
-1. (Only Windows) Open Folder in WSL.
-2. Open command palette and run `Dev Containers: Open Folder in Container`.
-3. After the container is built, authorize your org. (ex. run `SFDX: Authorize an org`)
