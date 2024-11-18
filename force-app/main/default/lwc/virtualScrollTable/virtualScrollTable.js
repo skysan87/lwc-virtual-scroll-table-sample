@@ -22,41 +22,39 @@ export default class VirtualScrollTable extends LightningElement {
   _alldata = []
   totalDataLength = 0
 
-  visibleRowCount = 0
   startRowIndex = 0
+  endRowIndex = 0
   offsetY_Top = 0
   offsetY_Bottom = 0
 
-  ticking = false
+  frameId = -1
 
   connectedCallback () {
     window.addEventListener('resize', () => this.calcVisibleData())
   }
 
   handleScroll () {
-    if (!this.ticking) {
-      requestAnimationFrame(() => {
-        this.ticking = false
-        this.calcVisibleData()
-      })
-      this.ticking = true
-    }
+    cancelAnimationFrame(this.frameId)
+    this.frameId = requestAnimationFrame(() => this.calcVisibleData())
   }
 
   calcVisibleData () {
-    const scrollTop = this.getScrollTop()
-    const viewHeight = this.getViewHeight()
+    const element = this.template.querySelector('.viewflame')
+    if (!element) return
 
-    if (viewHeight === 0) return
+    const scrollTop = element.scrollTop
+    const viewHeight = element.clientHeight
 
-    const rowIndex = Math.floor(scrollTop / this.rowheight) - BUFFER_ROW_COUNT
-    this.startRowIndex = Math.max(0, rowIndex)
+    let rowIndex = Math.floor(scrollTop / this.rowheight) - BUFFER_ROW_COUNT
+    rowIndex = Math.max(0, rowIndex)
 
-    const rowCount = Math.ceil(viewHeight / this.rowheight) + 2 * BUFFER_ROW_COUNT
-    this.visibleRowCount = Math.min(this.totalDataLength - this.startRowIndex, rowCount)
+    let rowCount = Math.ceil(viewHeight / this.rowheight) + 2 * BUFFER_ROW_COUNT
+    rowCount = Math.min(this.totalDataLength - rowIndex, rowCount)
 
+    this.startRowIndex = rowIndex
+    this.endRowIndex = rowIndex + rowCount
     this.offsetY_Top = this.startRowIndex * this.rowheight
-    this.offsetY_Bottom = this.totalHeight - this.offsetY_Top - (this.visibleRowCount * this.rowheight)
+    this.offsetY_Bottom = this.totalHeight - this.offsetY_Top - (rowCount * this.rowheight)
   }
 
   @api
@@ -72,19 +70,7 @@ export default class VirtualScrollTable extends LightningElement {
   }
 
   get visibledata () {
-    const start = this.startRowIndex
-    const end = start + this.visibleRowCount
-    return this._alldata.slice(start, end)
-  }
-
-  getScrollTop () {
-    const element = this.template.querySelector('.viewflame')
-    return element?.scrollTop ?? 0
-  }
-
-  getViewHeight () {
-    const element = this.template.querySelector('.viewflame')
-    return element?.clientHeight ?? 0
+    return this._alldata.slice(this.startRowIndex, this.endRowIndex)
   }
 
   get transformTopStyle () {
