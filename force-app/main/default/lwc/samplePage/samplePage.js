@@ -1,7 +1,7 @@
 import { LightningElement } from 'lwc';
 
 const COL_SIZE = 100
-const DATA_SIZE = 2000
+const DATA_SIZE = 100
 
 export default class SamplePage extends LightningElement {
 
@@ -23,12 +23,19 @@ export default class SamplePage extends LightningElement {
   }
 
   async getData () {
-    return Array.from({ length: DATA_SIZE }, (_, i) => i + 1)
-      .map(i => {
+    return Array.from({ length: DATA_SIZE })
+      .map((_, i) => {
         const row = {}
         row.index = i
+        if (i % 10 === 0) {
+          row.isMainCategory = true
+        } else if (i % 7 === 0) {
+          row.isSubCategory = true
+        } else {
+          row.isItem = true
+        }
         for (let index = 0; index < COL_SIZE; index++) {
-          row[`col${index}`] = `data${index}_${i}`
+          row[`col${index}`] = `row${i}_col${index}`
         }
         return row
       })

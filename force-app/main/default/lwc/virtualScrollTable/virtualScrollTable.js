@@ -13,7 +13,7 @@ export default class VirtualScrollTable extends LightningElement {
   /**
    * @type {number} table-row height
    */
-  @api rowheight = 28.5 // basic slds-table-cell height(if using 'slds-table_cell-buffer' selector)
+  @api rowheight = 52 // basic slds-table-cell height(if using 'slds-table_cell-buffer' selector)
   /**
    * @type {{ label: string, fieldName: string }[]} columns config
    */
