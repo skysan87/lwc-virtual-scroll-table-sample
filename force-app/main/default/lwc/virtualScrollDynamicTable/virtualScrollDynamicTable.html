@@ -1,0 +1,330 @@
+<template>
+  <div class="viewflame" style={viewflameStyle} onscroll={handleScroll}>
+    <table class="slds-table slds-table_bordered slds-table_col-bordered">
+      <!-- header -->
+      <thead class="sticky">
+        <template iterator:col={columns}>
+          <td title={col.value.label} key={col.value.fieldName}>{col.value.label}</td>
+        </template>
+      </thead>
+      <!-- body -->
+      <tbody>
+        <tr style={transformTopStyle}></tr>
+        <template iterator:row={visibledata}>
+          <!--
+            TODO: Due to limitations in slot element behavior within table elements, please adjust your table layout accordingly.
+          -->
+          <tr lwc:if={row.value.isItem} key={row.value.index} class="slds-hint-parent item">
+            <td>
+              <div class="slds-truncate">{row.value.col0}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col1}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col2}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col3}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col4}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col5}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col6}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col7}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col8}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col9}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col10}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col11}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col12}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col13}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col14}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col15}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col16}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col17}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col18}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col19}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col20}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col21}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col22}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col23}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col24}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col25}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col26}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col27}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col28}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col29}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col30}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col31}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col32}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col33}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col34}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col35}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col36}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col37}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col38}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col39}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col40}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col41}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col42}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col43}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col44}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col45}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col46}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col47}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col48}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col49}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col50}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col51}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col52}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col53}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col54}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col55}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col56}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col57}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col58}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col59}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col60}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col61}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col62}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col63}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col64}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col65}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col66}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col67}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col68}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col69}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col70}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col71}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col72}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col73}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col74}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col75}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col76}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col77}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col78}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col79}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col80}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col81}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col82}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col83}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col84}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col85}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col86}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col87}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col88}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col89}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col90}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col91}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col92}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col93}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col94}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col95}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col96}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col97}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col98}</div>
+            </td>
+            <td>
+              <div class="slds-truncate">{row.value.col99}</div>
+            </td>
+          </tr>
+          <tr lwc:elseif={row.value.isMainCategory} key={row.value.index} class="main-category">
+            <td colspan={colspan}>Main Category</td>
+          </tr>
+          <tr lwc:elseif={row.value.isSubCategory} key={row.value.index} class="sub-category">
+            <td colspan={colspan}>Sub Category</td>
+          </tr>
+        </template>
+        <tr style={transformBottomStyle}></tr>
+      </tbody>
+    </table>
+  </div>
+</template>

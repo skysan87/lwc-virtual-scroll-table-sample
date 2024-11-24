@@ -1,0 +1,24 @@
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+thead td {
+  background-color: rgb(243, 243, 243);
+}
+
+.main-category {
+  background-color: cornflowerblue;
+  height: 30px;
+}
+
+.sub-category {
+  background-color: darkcyan;
+  height: 40px;
+}
+
+.item {
+  height: 60px;
+}
+
